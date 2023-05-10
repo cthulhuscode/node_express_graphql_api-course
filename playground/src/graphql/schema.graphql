@@ -1,0 +1,32 @@
+type Query {
+  hello: String
+  getPerson: String
+
+  # Products
+  product(id: ID!): Product!
+  products: [Product!]!
+}
+
+type Mutation {
+  addProduct(dto: AddProductDto!): Product!
+}
+
+"Product model"
+type Product {
+  id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  categoryId: ID!
+  image: String!
+  createdAt: String!
+}
+
+# DTOs o Schemas
+input AddProductDto {
+  name: String!
+  price: Float!
+  description: String!
+  categoryId: ID!
+  image: String!
+}
