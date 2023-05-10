@@ -5,6 +5,8 @@ const whitelist = [
   "http://localhost:8080",
   "https://myapp.com",
   "http://localhost:5173",
+  "https://studio.apollographql.com/",
+  "http://localhost:3000",
 ];
 
 export const corsOptions: CorsOptions = {
