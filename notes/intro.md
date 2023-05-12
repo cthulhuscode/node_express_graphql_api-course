@@ -35,6 +35,22 @@ The "Query" type is special: it lists all of the available queries that clients 
 
 Mutations in GraphQL are used to modify data on the server. They allow you to create, update, or delete data. Mutations are similar to queries in structure but are defined with the mutation keyword. Mutations can have input arguments to specify the data to be modified.
 
+### Inputs
+
+Inputs are a way to pass complex sets of parameters to a GraphQL operation, such as a query or mutation. Inputs are defined as a separate input object type in the GraphQL schema and can be used as arguments in field definitions.
+
+Here's an example of how inputs are defined in GraphQL:
+
+    input CreateUserInput {
+      name: String!
+      age: Int!
+      email: String!
+    }
+
+    type Mutation {
+      createUser(input: CreateUserInput!): User!
+    }
+
 ## Subscription
 
 ### type Subscription
