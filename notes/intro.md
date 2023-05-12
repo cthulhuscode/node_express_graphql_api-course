@@ -23,11 +23,25 @@ GraphQL has a strong type system that defines the structure and shape of the dat
 
 ## Queries
 
-In GraphQL, queries are used to retrieve data from the server. A query describes the shape of the data you want to fetch and allows you to specify which fields you need. Queries are written in a structure similar to the shape of the desired response.
+In GraphQL, queries are used to retrieve data from the server. A query describes the shape of the data you want to fetch and allows you to specify which fields you need. Queries are written in a structure similar to the shape of the desired response. It's possible to make several queries in the same request. And also is possible to use the same method several times in the same request, but an alias must be created for Graphql to be able to retrieve the data.
 
 ### type Query
 
 The "Query" type is special: it lists all of the available queries that clients can execute, along with the return type for each.
+
+### Alias
+
+Clients retrieving data from Graphql can rename the schemas or objects defined to do the different operations.
+
+For example:
+
+    query {
+      myProducts: products {
+        name
+      }
+    }
+
+The response will be in an object/array called _myProducts_ instead of _products_.
 
 ## Mutations
 
