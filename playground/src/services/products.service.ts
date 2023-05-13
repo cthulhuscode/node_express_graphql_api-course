@@ -71,7 +71,7 @@ export class ProductsService {
     return newProduct;
   }
 
-  async update(id: number, changes: Omit<IProduct, "id">) {
+  async update(id: number, changes: Partial<IProduct>) {
     const currentProduct = await this.findOne(id);
 
     const updatedProduct = await currentProduct.update(changes);

@@ -3,20 +3,25 @@ import { ProductsService } from "../services";
 
 const service = new ProductsService();
 
-export const getProduct = async (_: any, { id }: { id: string }) => {
-  const product = await service.findOne(+id);
-  return product;
+export const getProduct = (_: any, { id }: { id: string }) => {
+  return service.findOne(+id);
 };
 
-export const getProducts = async () => {
-  const products = await service.find({});
-  return products;
+export const getProducts = () => {
+  return service.find({});
 };
 
-export const addProduct = async (
+export const addProduct = (_: any, { dto }: { dto: Omit<IProduct, "id"> }) => {
+  return service.create(dto);
+};
+
+export const updateProduct = (
   _: any,
-  { dto }: { dto: Omit<IProduct, "id"> }
+  { id, dto }: { id: number; dto: Partial<IProduct> }
 ) => {
-  const newProduct = await service.create(dto);
-  return newProduct;
+  return service.update(id, dto);
+};
+
+export const deleteProduct = (_: any, { id }: { id: number }) => {
+  return service.delete(id);
 };
