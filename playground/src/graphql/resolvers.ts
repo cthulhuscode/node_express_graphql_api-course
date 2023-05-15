@@ -5,6 +5,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "./product.resolvers";
+import { login } from "./auth.resolvers";
 
 export const resolvers = {
   Query: {
@@ -17,8 +18,12 @@ export const resolvers = {
     products: getProducts,
   },
   Mutation: {
+    // Products
     addProduct,
     updateProduct,
     deleteProduct,
+
+    // Auth
+    login,
   },
 };
