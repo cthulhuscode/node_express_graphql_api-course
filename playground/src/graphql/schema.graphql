@@ -8,10 +8,16 @@ type Query {
 }
 
 type Mutation {
+  # Products
   addProduct(dto: AddProductDto!): Product!
   updateProduct(id: ID!, dto: UpdateProductDto!): Product
   deleteProduct(id: ID!): ID!
+
+  # Auth
   login(email: String!, password: String!): LoginResponse
+
+  # Categories
+  addCategory(dto: AddCategoryDto!): Category!
 }
 
 "Product model"
@@ -53,7 +59,10 @@ type UserToken {
   role: String!
 }
 
-# DTOs o Schemas
+#
+# DTOs / Schemas / Inputs
+#
+
 input AddProductDto {
   name: String!
   price: Float!
@@ -68,4 +77,9 @@ input UpdateProductDto {
   description: String
   categoryId: ID
   image: String
+}
+
+input AddCategoryDto {
+  name: String!
+  image: String!
 }

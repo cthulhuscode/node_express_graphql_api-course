@@ -6,6 +6,7 @@ import {
   deleteProduct,
 } from "./product.resolvers";
 import { login } from "./auth.resolvers";
+import { addCategory } from "./category.resolvers";
 
 export const resolvers = {
   Query: {
@@ -25,5 +26,8 @@ export const resolvers = {
 
     // Auth
     login,
+
+    // Categories
+    addCategory,
   },
 };
