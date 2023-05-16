@@ -6,6 +6,7 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 import { loadFiles } from "@graphql-tools/load-files";
+import { buildContext } from "graphql-passport";
 
 import { resolvers } from "./resolvers";
 
@@ -24,9 +25,7 @@ export const useGraphql = async (app: Express) => {
     cors(),
     bodyParser.json(),
     expressMiddleware(server, {
-      context: async ({ req }) => ({
-        token: req.headers.token,
-      }),
+      context: async ({ req, res }) => buildContext({ req, res }),
     })
   );
 };

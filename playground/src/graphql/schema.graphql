@@ -11,7 +11,7 @@ type Mutation {
   addProduct(dto: AddProductDto!): Product!
   updateProduct(id: ID!, dto: UpdateProductDto!): Product
   deleteProduct(id: ID!): ID!
-  login(email: String!, password: String!): LoginResponse!
+  login(email: String!, password: String!): LoginResponse
 }
 
 "Product model"
@@ -44,7 +44,13 @@ type User {
 
 type LoginResponse {
   token: String!
-  user: User!
+  user: UserToken!
+}
+
+type UserToken {
+  userId: ID!
+  customerId: Int
+  role: String!
 }
 
 # DTOs o Schemas
