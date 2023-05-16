@@ -1,8 +1,5 @@
 import { Strategy, ExtractJwt } from "passport-jwt";
-import { UsersService } from "../../../services";
 import { config } from "../../../config";
-
-const service = new UsersService();
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
