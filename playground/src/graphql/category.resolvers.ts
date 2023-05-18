@@ -12,5 +12,5 @@ export const addCategory = async (_: any, { dto }: any, context: any) => {
   // If role not authorized will throw a boom error
   checkRolesGql(user, Roles.Admin);
 
-  return service.create(dto);
+  return service.create({ ...dto, image: dto.image.href });
 };

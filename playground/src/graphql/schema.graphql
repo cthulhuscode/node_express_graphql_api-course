@@ -35,7 +35,7 @@ type Product {
 type Category {
   id: ID!
   name: String!
-  image: String!
+  image: URL!
   createdAt: String!
 }
 
@@ -80,6 +80,8 @@ input UpdateProductDto {
 }
 
 input AddCategoryDto {
-  name: String!
+  name: CategoryNameType!
   image: URL!
 }
+
+scalar CategoryNameType
