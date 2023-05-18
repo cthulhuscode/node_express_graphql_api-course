@@ -3,9 +3,9 @@ import {
   changePassword,
   login,
   recoverAccount,
+  getAuthenticatedUser,
 } from "../controllers/auth.controller";
 import passport from "passport";
-import { getAuthenticatedUser } from "../controllers/users.controller";
 import { validatorHandler } from "../middlewares";
 import { changePasswordSchema, recoverySchema } from "../schemas/auth.schemas";
 
@@ -18,7 +18,7 @@ export const router = Router();
 
 router.post(
   "/login",
-  
+
   passport.authenticate("local", { session: false }),
   login
 );

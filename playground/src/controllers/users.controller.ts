@@ -15,17 +15,6 @@ export const getUser = async (req: Request, res: Response) => {
   res.status(200).json({ user });
 };
 
-export const getAuthenticatedUser = async (req: Request, res: Response) => {
-  const user: any = req.user;
-
-  if (user.sub.userId) {
-    const authUser = await service.findOne(+user.sub.userId);
-    res.status(200).json({ user: authUser });
-  }
-
-  res.status(401).json({ msg: "There is currently no authenticated user." });
-};
-
 export const createUser = async (req: Request, res: Response) => {
   const user = await service.create(req.body);
   res.status(201).json({ user });

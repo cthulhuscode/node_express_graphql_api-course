@@ -20,6 +20,7 @@ export const router = Router();
 
 router.get(
   "/:id",
+  passport.authenticate("jwt", { session: false }),
   checkRoles(Roles.Admin, Roles.Customer),
   validatorHandler(getCategorySchema, "params"),
   getCategory
