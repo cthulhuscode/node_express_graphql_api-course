@@ -5,6 +5,10 @@ import { Roles } from "../utils/roles";
 
 const service = new CategoriesService();
 
+export const getCategory = (_: any, { id }: { id: number }) => {
+  return service.findOneWithoutAssociations(id);
+};
+
 export const addCategory = async (_: any, { dto }: any, context: any) => {
   // If token is not valid will throw a boom error
   const user = await checkJwtGql(context);
