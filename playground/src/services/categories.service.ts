@@ -23,6 +23,14 @@ export class CategoriesService {
     return response;
   }
 
+  async findOneWithoutAssociations(id: number) {
+    const response = await Category.findByPk(id);
+
+    if (!response) throw boom.notFound("Category not found.");
+
+    return response;
+  }
+
   async create(category: Omit<ICategory, "id">) {
     const newCategory = await Category.create(category);
 

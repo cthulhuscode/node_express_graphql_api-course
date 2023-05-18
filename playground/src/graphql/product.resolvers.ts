@@ -11,6 +11,11 @@ export const getProducts = () => {
   return service.find({});
 };
 
+export const getProductsOfCategory = (parent: any) => {
+  const categoryId = parent.dataValues.id;
+  return service.findProductsByCategory(categoryId);
+};
+
 export const addProduct = (_: any, { dto }: { dto: Omit<IProduct, "id"> }) => {
   return service.create(dto);
 };

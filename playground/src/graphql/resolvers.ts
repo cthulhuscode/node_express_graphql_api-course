@@ -1,13 +1,14 @@
+import { RegularExpression } from "graphql-scalars";
 import {
   getProduct,
   getProducts,
   addProduct,
   updateProduct,
   deleteProduct,
+  getProductsOfCategory,
 } from "./product.resolvers";
 import { login } from "./auth.resolvers";
-import { addCategory } from "./category.resolvers";
-import { RegularExpression } from "graphql-scalars";
+import { addCategory, getCategory } from "./category.resolvers";
 
 // the string can have a-z characters in lower/capital case
 // min length: 3, max length: 8
@@ -25,6 +26,9 @@ export const resolvers = {
     // Products
     product: getProduct,
     products: getProducts,
+
+    // Categories
+    category: getCategory,
   },
   Mutation: {
     // Products
@@ -38,7 +42,10 @@ export const resolvers = {
     // Categories
     addCategory,
   },
+  CategoryNameType, // New custom type
 
-  // Create new types
-  CategoryNameType,
+  // The same name as in the schema.graphql (Category)
+  Category: {
+    products: getProductsOfCategory, // Modify the property products, execute it as a resolver
+  },
 };

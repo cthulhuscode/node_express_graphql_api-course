@@ -60,6 +60,15 @@ export class ProductsService {
     return product;
   }
 
+  async findProductsByCategory(id: number) {
+    const products = await Product.findAll({ where: { categoryId: id } });
+
+    if (!products)
+      throw boom.notFound("No product was found for this category.");
+
+    return products;
+  }
+
   async create(product: Omit<IProduct, "id">) {
     const newProduct = await Product.create(product);
 
