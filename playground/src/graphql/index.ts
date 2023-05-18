@@ -21,8 +21,8 @@ export const useGraphql = async (app: Express) => {
   const allResolvers = [resolvers, scalarsResolvers];
 
   const server = new ApolloServer({
-    typeDefs: await loadFiles("./**/*.graphql"),
-    resolvers,
+    typeDefs,
+    resolvers: allResolvers,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
 
